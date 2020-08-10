@@ -5,6 +5,7 @@ use Dcat\Admin\Grid;
 use Dcat\Admin\Form;
 use Dcat\Admin\Grid\Filter;
 use Dcat\Admin\Show;
+use Dcat\Admin\Layout\Navbar;
 
 /**
  * Dcat-admin - admin builder based on Laravel.
@@ -24,4 +25,18 @@ use Dcat\Admin\Show;
  * Admin::js('/packages/prettydocs/js/main.js');
  *
  */
+
 Admin::css('static/css/nxcrm.css');
+
+// 覆盖默认配置
+config(['admin' => user_admin_config()]);
+
+Admin::navbar(function (Navbar $navbar) {
+
+    $navbar->right(App\Admin\Actions\AdminSetting::make()->render());
+    $navbar->right(App\Admin\Actions\BlogSetting::make()->render());
+
+    // 下拉菜单
+    //$navbar->right(view('admin.navbar-2'));
+
+});
