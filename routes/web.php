@@ -13,6 +13,14 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Auth::routes();
+
+Route::get('/', 'TopicsController@index')->name('topics');
+
+Route::post('topics/index', 'TopicsController@index')->name('topics.index');
+
+Route::get('topics/{topic}', 'TopicsController@show')->name('topics.show');
+
+Route::resource('categories', 'CategoriesController', ['only' => ['show']]);
+
+Route::resource('labels', 'LabelsController', ['only' => ['show']]);

@@ -5,9 +5,16 @@ namespace App\Admin\Forms;
 use Dcat\Admin\Widgets\Form;
 use Illuminate\Support\Arr;
 use Symfony\Component\HttpFoundation\Response;
+use Cache;
+use App\Models\AdminSetting;
+use App\Handlers\RememberCache;
+
 
 class BlogSetting extends Form
 {
+
+    protected $cache_expire_in_seconds = 60 * 60 * 24;
+
     /**
      * 处理表单请求.
      *
@@ -17,9 +24,13 @@ class BlogSetting extends Form
      */
     public function handle(array $input)
     {
-        foreach (Arr::dot($input) as $k => $v) {
-            $this->update($k, $v);
-        }
+        $gonggao = AdminSetting::where('key', 'gonggao')->first();
+
+        $gonggao->value = $input['gonggao'];
+
+        $gonggao->save();
+
+        Cache::put('gonggao', $input['gonggao'], $this->cache_expire_in_seconds);
 
         return $this->ajaxResponse('设置成功');
     }
@@ -57,17 +68,8 @@ JS;
      */
     public function default()
     {
-        return blog_config();
-    }
+        $gonggao = app(RememberCache::class)->adminSettingCache('gonggao');
 
-    /**
-     * 更新配置.
-     *
-     * @param string $key
-     * @param string $value
-     */
-    protected function update($key, $value)
-    {
-        blog_config([$key => $value]);
+        return ['gonggao' => $gonggao];
     }
 }

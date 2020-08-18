@@ -11,7 +11,7 @@ return [
     | login page.
     |
     */
-    'name' => 'Jia Zi',
+    'name' => 'Dcat Admin',
 
     /*
     |--------------------------------------------------------------------------
@@ -22,7 +22,7 @@ return [
     | `img` tag, eg '<img src="http://logo-url" alt="Admin logo">'.
     |
     */
-    'logo' => '<img src="/static/img/zjntx.jpg" width="55"> &nbsp;Jia Zi',
+    'logo' => '<img src="/vendors/dcat-admin/images/logo.png" width="35"> &nbsp;Dcat Admin',
 
     /*
     |--------------------------------------------------------------------------
@@ -34,7 +34,7 @@ return [
     | '<img src="http://logo-url" alt="Admin logo">'.
     |
     */
-    'logo-mini' => '<img src="/static/img/zjntx.jpg">',
+    'logo-mini' => '<img src="/vendors/dcat-admin/images/logo.png">',
 
     /*
      |--------------------------------------------------------------------------
@@ -85,7 +85,7 @@ return [
     | Html title for all pages.
     |
     */
-    'title' => 'Jia Zi',
+    'title' => 'Admin',
 
     /*
     |--------------------------------------------------------------------------
