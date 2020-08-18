@@ -25,7 +25,7 @@ class TopicsController extends Controller
         $labels = $this->getLabels();
 
         // 友链
-        $links = app(RememberCache::class)->BlogLinksCache();
+        $links = Link::all();
 
         // 公告
         $gonggao = app(RememberCache::class)->adminSettingCache('gonggao');
@@ -49,7 +49,7 @@ class TopicsController extends Controller
         $labels = $this->getLabels();
 
         // 友链
-        $links = app(RememberCache::class)->BlogLinksCache();
+        $links = Link::all();
 
         // 公告
         $gonggao = app(RememberCache::class)->adminSettingCache('gonggao');

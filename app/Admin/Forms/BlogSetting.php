@@ -26,9 +26,13 @@ class BlogSetting extends Form
     {
         $gonggao = AdminSetting::where('key', 'gonggao')->first();
 
-        $gonggao->value = $input['gonggao'];
+        if (!$gonggao) {
+            AdminSetting::create(['name' => '公告', 'key' => 'gonggao', 'value' => $input['gonggao']]);
+        } else {
+            $gonggao->value = $input['gonggao'];
 
-        $gonggao->save();
+            $gonggao->save();
+        }
 
         Cache::put('gonggao', $input['gonggao'], $this->cache_expire_in_seconds);
 

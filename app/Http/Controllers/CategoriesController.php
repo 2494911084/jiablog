@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Category;
 use App\Models\Topic;
 use App\Models\Label;
+use App\Models\Link;
 use App\Handlers\RememberCache;
 
 class CategoriesController extends Controller
@@ -20,7 +21,7 @@ class CategoriesController extends Controller
         $labels = $this->getLabels();
 
         // 友链
-        $links = app(RememberCache::class)->BlogLinksCache();
+        $links = Link::all();
 
         // 公告
         $gonggao = app(RememberCache::class)->adminSettingCache('gonggao');

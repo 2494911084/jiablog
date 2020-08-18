@@ -12,4 +12,5 @@ class AdminSetting extends Model
 
     protected $table = 'admin_settings';
 
+    protected $fillable = ['name', 'key', 'value'];
 }
